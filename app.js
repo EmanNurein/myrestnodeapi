@@ -10,7 +10,7 @@ const mongoUrl = "mongodb://localhost:27017";
 //const mongoUrl = "mongodb+srv://eman:eman1234@cluster0.bvz0d.mongodb.net/emaarest?retryWrites=true&w=majority";
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const token = "8fbf8tyyt87378";
+// const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZ";
 
 
 
