@@ -44,23 +44,38 @@ const cors = require('cors');
             let query = {};
             let stateId = Number(req.query.state_id)
             let mealId = Number(req.query.meal_id)
+            let cuisineId = Number(req.query.cuisine_id)
             if(stateId){
                 query = {state_id:stateId}
             }else if(mealId){
                 query = {'mealTypes.mealtype_id':mealId}
+            }else if(cuisineId){
+                query = {'cuisines.cuisine_id':cuisineId}
             }
 
             db.collection('restaurantData').find(query).toArray((err,result) => {
                 if(err) throw err;
                 res.send(result)
             })
-        })  
+        }) 
+
 
         //mealTypes
         app.get('/mealtype',(req,res) => {
             //if(req.query.token === token)
             {
             db.collection('mealType').find().toArray((err,result) => {
+                if (err) throw err ;
+                res.send(result)
+            })
+            }
+        })
+
+         //cuisine
+         app.get('/cuisine',(req,res) => {
+            //if(req.query.token === token)
+            {
+            db.collection('cuisines').find().toArray((err,result) => {
                 if (err) throw err ;
                 res.send(result)
             })
@@ -89,6 +104,8 @@ const cors = require('cors');
                 res.send(result)
         })
     })
+
+ 
      // menu details on basis of item select
         app.post('/menuItem',(req,res) => {
             console.log(req.body);
@@ -101,6 +118,7 @@ const cors = require('cors');
                 res.send('Invalid Input')
             }
         })
+        
 
 
         // place Order
